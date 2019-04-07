@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 //import Models
 const Link = require('./models/Links');
 
-mongoose.connect('mongodb://localhost/ShortLinks-app', { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/ShortLinks-app', { useNewUrlParser: true });
 
 app.post('/', async (req, res) => {
 	try {
@@ -50,6 +50,6 @@ app.get('/', async (req, res) => {
 	}
 });
 
-app.listen(3700, () => {
+app.listen(process.env.PORT || 3700, () => {
 	console.log('Server started');
 });
