@@ -9,11 +9,7 @@ app.use(bodyParser.json());
 //import Models
 const Link = require('./models/Links');
 
-mongoose.connect(
-	'mongodb://heroku_lv162wpc:ihq467g8ld2lgicf3kchi1mmd0@ds131296.mlab.com:31296/heroku_lv162wpc' ||
-		'mongodb://localhost/ShortLinks-app',
-	{ useNewUrlParser: true }
-);
+mongoose.connect(MONGODB_URI || 'mongodb://localhost/ShortLinks-app', { useNewUrlParser: true });
 
 app.post('/', async (req, res) => {
 	try {
